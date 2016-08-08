@@ -2,7 +2,7 @@ package com.frankszhang.common.po;
 
 /**
  * @Description  用户类
- * @author zwf<373561032@qq.com>
+ * @author zwf
  * @Date 2016年5月3日 下午7:14:56
  * @version V1.0
  */
