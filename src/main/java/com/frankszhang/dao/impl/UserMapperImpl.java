@@ -5,11 +5,13 @@ import java.lang.reflect.ParameterizedType;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.frankszhang.common.po.User;
 import com.frankszhang.dao.UserMapper;
 
-public class UserMapperImpl<User> implements UserMapper{
+@Repository
+public class UserMapperImpl implements UserMapper{
 
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -22,7 +24,7 @@ public class UserMapperImpl<User> implements UserMapper{
 
 	@Override
 	public int insert(com.frankszhang.common.po.User record) {
-		return sqlSessionTemplate.insert(getStatement("insert"),record);
+		return sqlSessionTemplate.insert("com.frankszhang.dao.UserMapper.insert",record);
 	}
 
 	@Override
@@ -49,14 +51,14 @@ public class UserMapperImpl<User> implements UserMapper{
 		return 0;
 	}
 	
-	protected String getStatement(String id) {
-		return getEntityClass().getName() + "Mapper" + id;
-	}
-	
-	@SuppressWarnings("unchecked")
-	private Class<User> getEntityClass() {
-		return (Class<User>) ((ParameterizedType)this.getClass()
-				.getGenericSuperclass()).getActualTypeArguments()[0];
-	}
+//	protected String getStatement(String id) {
+//		return getEntityClass().getName() + "Mapper" + id;
+//	}
+//	
+//	@SuppressWarnings("unchecked")
+//	private Class<User> getEntityClass() {
+//		return (Class<User>) ((ParameterizedType)this.getClass()
+//				.getGenericSuperclass()).getActualTypeArguments()[0];
+//	}
 
 }

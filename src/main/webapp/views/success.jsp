@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sign up</title>
+<title>success</title>
 </head>
 <body>
-	<form action="" method="">
-		id:<input type="text" name="id"><br>
-		name:<input type="text" name="name"><br>
-		password:<input type="text" name="password">
-	</form>
+	<h1>Operation is successful</h1>
 </body>
 </html>

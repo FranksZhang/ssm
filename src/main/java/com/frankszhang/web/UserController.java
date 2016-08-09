@@ -1,9 +1,9 @@
 package com.frankszhang.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.frankszhang.common.po.User;
 import com.frankszhang.service.UserService;
@@ -12,12 +12,13 @@ import com.frankszhang.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-	private UserService userServiceImpl;
+	@Resource
+	private UserService userService;
 	
 	@RequestMapping("/addUser")
-	@ResponseBody
 	public String addUser(User user) {
-		
+		int result = userService.insert(user);
+		System.out.println("result=" + result);
 		return "success";
 	}
 }
