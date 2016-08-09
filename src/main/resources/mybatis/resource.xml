@@ -11,7 +11,7 @@
 
 	<!-- 配置sql文件地址 -->
 	<mappers>
-		<mapper resource="mybatis/user.xml" />
+		<mapper resource="mybatis/UserMapper.xml" />
 	</mappers>
 
 </configuration>
