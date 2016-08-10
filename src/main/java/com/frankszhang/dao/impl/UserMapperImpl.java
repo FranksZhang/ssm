@@ -1,64 +1,28 @@
 package com.frankszhang.dao.impl;
 
-import java.lang.reflect.ParameterizedType;
-
-import javax.annotation.Resource;
-
-import org.mybatis.spring.SqlSessionTemplate;
+import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
 import com.frankszhang.common.po.User;
 import com.frankszhang.dao.UserMapper;
+import com.frankszhang.dao.base.impl.BaseMapperImpl;
 
 @Repository
-public class UserMapperImpl implements UserMapper{
+public class UserMapperImpl extends BaseMapperImpl<User> implements UserMapper{
 
-	@Resource
-	private SqlSessionTemplate sqlSessionTemplate;
-	
-	@Override
-	public int deleteByPrimaryKey(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int insert(com.frankszhang.common.po.User record) {
-		return sqlSessionTemplate.insert("com.frankszhang.dao.UserMapper.insert",record);
-	}
-
-	@Override
-	public int insertSelective(com.frankszhang.common.po.User record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public com.frankszhang.common.po.User selectByPrimaryKey(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int updateByPrimaryKeySelective(com.frankszhang.common.po.User record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByPrimaryKey(com.frankszhang.common.po.User record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-//	protected String getStatement(String id) {
-//		return getEntityClass().getName() + "Mapper" + id;
-//	}
-//	
-//	@SuppressWarnings("unchecked")
-//	private Class<User> getEntityClass() {
-//		return (Class<User>) ((ParameterizedType)this.getClass()
-//				.getGenericSuperclass()).getActualTypeArguments()[0];
+//	@Override
+//	public int insert(com.frankszhang.common.po.User record) {
+//		return sqlSessionTemplate.insert("com.frankszhang.dao.UserMapper.insert",record);
 //	}
 
+	@Test
+	public void test() {
+		System.out.println(getNameSpace());
+		User user = new User();
+		user.setId("9");
+		user.setName("qw");
+		user.setPassword("123");
+		int i = insert(user);
+		System.out.println(i);
+	}
 }

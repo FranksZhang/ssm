@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.frankszhang.common.po.User;
+import com.frankszhang.dao.UserMapper;
 import com.frankszhang.service.UserService;
 
 @Controller
@@ -14,6 +15,8 @@ public class UserController {
 
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserMapper userMapper;
 	
 	@RequestMapping("/addUser")
 	public String addUser(User user) {

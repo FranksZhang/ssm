@@ -1,13 +1,8 @@
 package com.frankszhang.service;
 
 import com.frankszhang.common.po.User;
+import com.frankszhang.service.base.BaseService;
 
-public interface UserService {
+public interface UserService extends BaseService<User> {
 
-	/**
-	 * 插入一个对象
-	 * @param record
-	 * @return
-	 */
-	int insert(User record);
 }
