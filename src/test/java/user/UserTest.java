@@ -2,10 +2,14 @@ package user;
 
 import org.junit.Test;
 
-public class UserTest {
+import base.BaseTest;
+
+import com.frankszhang.common.po.User;
+
+public class UserTest extends BaseTest<User>{
 
 	@Test
 	public void add() {
-		
+	
 	}
 }

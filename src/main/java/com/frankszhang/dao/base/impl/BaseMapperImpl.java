@@ -1,7 +1,5 @@
 package com.frankszhang.dao.base.impl;
 
-import java.lang.reflect.ParameterizedType;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,14 +10,10 @@ public class BaseMapperImpl<T> implements BaseMapper<T> {
 	@Autowired
 	protected SqlSessionTemplate sqlSessionTemplate;
 	
-	private Class<T> entityClass;
-	
-	
+//	private Class<T> entityClass;
 
 	@Override
 	public int insert(T t) {
-		System.out.println(getStatement("insert"));//==com.frankszhang.common.po.User.insert
-
 		return sqlSessionTemplate.insert(getStatement("insert"), t);
 	}
 
@@ -48,6 +42,8 @@ public class BaseMapperImpl<T> implements BaseMapper<T> {
 		return sqlSessionTemplate.update(getStatement("updateByPrimaryKey"), t);
 	}
 
+	//这种方法获取到的namespace为com.frankszhang.common.po.User.insert
+	/**
 	@SuppressWarnings("unchecked")
 	protected Class<T> getEntityClass() {
 		if(this.entityClass == null) {
@@ -56,11 +52,13 @@ public class BaseMapperImpl<T> implements BaseMapper<T> {
 		}
 		return this.entityClass;
 	}
+	**/
 	
 	protected String getNameSpace() {
 		return this.getClass().getInterfaces()[0].toString().split(" ")[1].toString();
 	}
 
+	//获取到的namespace为com.frankszhang.dao.UserMapper.insert
 	protected String getStatement(String id) {
 		return getNameSpace() + "." + id;
 	}

@@ -24,4 +24,5 @@ public class UserController {
 		System.out.println("result=" + result);
 		return "success";
 	}
+	
 }
