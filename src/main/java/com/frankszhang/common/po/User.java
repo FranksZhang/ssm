@@ -1,5 +1,5 @@
 package com.frankszhang.common.po;
-
+ 
 public class User {
     private String id;
 
